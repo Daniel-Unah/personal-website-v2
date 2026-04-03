@@ -115,14 +115,16 @@ export default function App() {
     ],
   };
 
-  const leadership = {
-    title: "Chapter Development Chair",
-    org: "WashU National Society of Black Engineers",
-    date: "May 2024 - Present",
-    description: [
-      "Responsible for fostering growth, engagement, and collaboration within the chapter, as well as with other clubs with similar missions",
-    ],
-  };
+  const leadership = [
+    {
+      title: "Chapter Development Chair",
+      org: "WashU National Society of Black Engineers",
+      date: "May 2024 - Present",
+      description: [
+        "Responsible for fostering growth, engagement, and collaboration within the chapter, as well as with other clubs with similar missions",
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background selection:bg-accent/30 selection:text-accent">
@@ -151,33 +153,55 @@ export default function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="flex flex-col md:flex-row items-center gap-12"
                 >
-                  <p className="font-mono text-accent mb-4">Hi, my name is</p>
-                  <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-6">
-                    Daniel Unah<span className="text-accent">.</span>
-                  </h1>
-                  <h2 className="text-3xl sm:text-5xl font-bold text-muted mb-8 leading-tight">
-                    I build scalable software and data-driven solutions.
-                  </h2>
-                  <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-12">
-                    I'm a Computer Science student at <span className="text-foreground font-medium">Washington University in St. Louis</span>, 
-                    passionate about full-stack development, mobile applications, and artificial intelligence. 
-                    Currently focused on building impactful features at <span className="text-foreground font-medium">Atlassian</span>.
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href="mailto:d.unah@wustl.edu"
-                      className="px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-all flex items-center gap-2"
-                    >
-                      Get in touch <Mail size={18} />
-                    </a>
-                    <a
-                      href="#"
-                      className="px-8 py-4 bg-white/5 border border-border text-foreground font-medium rounded-lg hover:bg-white/10 transition-all flex items-center gap-2"
-                    >
-                      View Resume <FileText size={18} />
-                    </a>
+                  <div className="flex-1 order-2 md:order-1">
+                    <p className="font-mono text-accent mb-4">Hi, my name is</p>
+                    <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-6">
+                      Daniel Unah<span className="text-accent">.</span>
+                    </h1>
+                    <h2 className="text-3xl sm:text-5xl font-bold text-muted mb-8 leading-tight">
+                      I build scalable software and data-driven solutions.
+                    </h2>
+                    <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-12">
+                      I'm a Computer Science student at <span className="text-foreground font-medium">Washington University in St. Louis</span>, 
+                      passionate about full-stack development, mobile applications, and artificial intelligence. 
+                      Currently focused on building impactful features at <span className="text-foreground font-medium">Atlassian</span>.
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-4">
+                      <a
+                        href="mailto:d.unah@wustl.edu"
+                        className="px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-all flex items-center gap-2"
+                      >
+                        Get in touch <Mail size={18} />
+                      </a>
+                      <a
+                        href="#"
+                        className="px-8 py-4 bg-white/5 border border-border text-foreground font-medium rounded-lg hover:bg-white/10 transition-all flex items-center gap-2"
+                      >
+                        View Resume <FileText size={18} />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="relative order-1 md:order-2 shrink-0">
+                    <div className="w-64 h-64 sm:w-80 sm:h-80 relative group">
+                      {/* Decorative background element */}
+                      <div className="absolute inset-0 border-2 border-accent rounded-2xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
+                      
+                      {/* Image container */}
+                      <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
+                        <img
+                          src="https://picsum.photos/seed/daniel/800/800"
+                          alt="Daniel Unah"
+                          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                          referrerPolicy="no-referrer"
+                        />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-accent/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-300" />
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               </section>
@@ -308,12 +332,17 @@ export default function App() {
 
               {/* Leadership Section */}
               <Section title="Leadership" id="leadership">
-                <Card
-                  title={leadership.org}
-                  subtitle={leadership.title}
-                  date={leadership.date}
-                  description={leadership.description}
-                />
+                <div className="space-y-4">
+                  {leadership.map((lead, i) => (
+                    <Card
+                      key={i}
+                      title={lead.org}
+                      subtitle={lead.title}
+                      date={lead.date}
+                      description={lead.description}
+                    />
+                  ))}
+                </div>
               </Section>
 
               {/* Contact Section */}
