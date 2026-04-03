@@ -193,7 +193,7 @@ export default function App() {
                       {/* Image container */}
                       <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
                         <img
-                          src="https://picsum.photos/seed/daniel/800/800"
+                          src="images/me.jpg"
                           alt="Daniel Unah"
                           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                           referrerPolicy="no-referrer"
