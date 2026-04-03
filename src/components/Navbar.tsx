@@ -12,8 +12,8 @@ export default function Navbar() {
   ];
 
   const socialItems = [
-    { icon: <Github size={20} />, href: "https://github.com/danielunah", label: "GitHub" },
-    { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/danielunah", label: "LinkedIn" },
+    { icon: <Github size={20} />, href: "https://github.com/Daniel-Unah", label: "GitHub" },
+    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/daniel-unah-878447252/", label: "LinkedIn" },
     { icon: <Mail size={20} />, href: "mailto:d.unah@wustl.edu", label: "Email" },
     { icon: <FileText size={20} />, href: "#", label: "Resume" },
   ];

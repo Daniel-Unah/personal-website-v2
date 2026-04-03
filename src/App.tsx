@@ -193,9 +193,9 @@ export default function App() {
                       {/* Image container */}
                       <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
                         <img
-                          src="images/me.jpg"
+                          src="src/images/me.jpg"
                           alt="Daniel Unah"
-                          className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                          className="w-full h-full object-cover hover:grayscale-0 transition-all duration-500"
                           referrerPolicy="no-referrer"
                         />
                         {/* Overlay */}
@@ -366,11 +366,11 @@ export default function App() {
                   </a>
                   
                   <div className="flex justify-center gap-8 mt-16">
-                    <a href="https://linkedin.com/in/danielunah" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                    <a href="https://www.linkedin.com/in/daniel-unah-878447252/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
                       <Linkedin size={28} />
                       <span className="text-xs font-mono">LinkedIn</span>
                     </a>
-                    <a href="https://github.com/danielunah" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                    <a href="https://github.com/Daniel-Unah" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
                       <Github size={28} />
                       <span className="text-xs font-mono">GitHub</span>
                     </a>
