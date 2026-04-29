@@ -103,6 +103,17 @@ export default function App() {
 
   const projects = [
     {
+      title: "OSPeople",
+      subtitle: "Peer Matching Web App",
+      date: "2026",
+      description: [
+        "Web app that matches students in my scholarship program to peers with shared academic and professional experiences (courses, internships, and skills)",
+        "Built a clean, searchable React interface to make informal community knowledge more accessible and scalable",
+      ],
+      tags: ["React", "Search", "Community Platform"],
+      link: "https://ospeople.vercel.app/",
+    },
+    {
       title: "ScheduleSync",
       subtitle: "Full Stack Web App",
       date: "2026",
@@ -113,17 +124,6 @@ export default function App() {
       tags: ["React", "Node.js", "Google Calendar API", "OAuth 2.0"],
       link: "https://schedulesync.live/",
       extraLinks: [{ href: SCHEDULESYNC_DEMO_MP4, label: "Watch demo video" }],
-    },
-    {
-      title: "OSPeople",
-      subtitle: "Peer Matching Web App",
-      date: "2026",
-      description: [
-        "Web app that matches students in my scholarship program to peers with shared academic and professional experiences (courses, internships, and skills)",
-        "Built a clean, searchable React interface to make informal community knowledge more accessible and scalable",
-      ],
-      tags: ["React", "Search", "Community Platform"],
-      link: "https://ospeople.vercel.app/",
     },
     {
       title: "Goat Tracker",
