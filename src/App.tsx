@@ -115,6 +115,17 @@ export default function App() {
       extraLinks: [{ href: SCHEDULESYNC_DEMO_MP4, label: "Watch demo video" }],
     },
     {
+      title: "OSPeople",
+      subtitle: "Peer Matching Web App",
+      date: "2026",
+      description: [
+        "Web app that matches students in my scholarship program to peers with shared academic and professional experiences (courses, internships, and skills)",
+        "Built a clean, searchable React interface to make informal community knowledge more accessible and scalable",
+      ],
+      tags: ["React", "Search", "Community Platform"],
+      link: "https://ospeople.vercel.app/",
+    },
+    {
       title: "Goat Tracker",
       subtitle: "Data Dashboard",
       date: "2025",
