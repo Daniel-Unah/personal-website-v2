@@ -108,9 +108,9 @@ export default function App() {
       date: "2026",
       description: [
         "Web app that matches students in my scholarship program to peers with shared academic and professional experiences (courses, internships, and skills)",
-        "Built a clean, searchable React interface to make informal community knowledge more accessible and scalable",
+        "Built a clean, searchable interface using Vite and Supabase to make informal community knowledge more accessible and scalable",
       ],
-      tags: ["React", "Search", "Community Platform"],
+      tags: ["Vite", "Supabase", "Search", "Community Platform"],
       link: "https://ospeople.vercel.app/",
     },
     {
