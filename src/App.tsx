@@ -152,7 +152,7 @@ export default function App() {
   const skills = {
     languages: ["Python", "Java", "JavaScript", "TypeScript", "SQL", "C++", "C#", "R", "Swift", "PHP"],
     frameworks: ["React", "React Native", "Next.js", "Spring Boot", "Node.js", "Flask", "Tailwind CSS"],
-    tools: ["Git", "GraphQL", "MongoDB", "Unity", "Figma", "Android Studio", "Google Analytics 4", "Vite", "ServiceNow"],
+    tools: ["AWS", "Git", "GraphQL", "MongoDB", "Unity", "Figma", "Android Studio", "Google Analytics 4", "Vite", "ServiceNow"],
   };
 
   const education = {
