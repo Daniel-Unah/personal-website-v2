@@ -198,9 +198,12 @@ export default function App() {
           >
             <Navbar />
             
-            <main id="top" className="pt-16 pb-20 px-6">
+            <main id="top" className="scroll-mt-24 pt-16 pb-20 px-6">
               {/* Hero Section */}
-              <section id="about" className="max-w-5xl mx-auto pt-8 pb-20 sm:pt-12 sm:pb-28">
+              <section
+                id="about"
+                className="max-w-5xl mx-auto min-h-[calc(100vh-4rem)] pt-8 pb-12 sm:pt-12 sm:pb-16 flex items-center"
+              >
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -399,7 +402,7 @@ export default function App() {
               </Section>
 
               {/* Contact Section */}
-              <section id="contact" className="max-w-3xl mx-auto py-24 text-center">
+              <section id="contact" className="scroll-mt-24 max-w-3xl mx-auto py-24 text-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
