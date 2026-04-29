@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import Card from "./components/Card";
 const SCHEDULESYNC_DEMO_MP4 =
-  "https://raw.githubusercontent.com/Daniel-Unah/Daniel-Unah.github.io/main/images-videos/schedulesync%20demo.mp4";
+  "https://drive.google.com/file/d/1ZxT1ZVPLm1T49qWm9w9cjKozFXgOnbGb/view?usp=sharing";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -16,7 +16,7 @@ export default function App() {
       title: "Incoming Software Engineer",
       subtitle: "Atlassian",
       date: "Starting July 2026",
-      location: "San Francisco, CA",
+      location: "Seattle, WA",
       description: [
         "Returning full-time after interning on Confluence in Summer 2025",
       ],
