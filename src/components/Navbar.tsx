@@ -18,9 +18,9 @@ export default function Navbar() {
     { icon: <Mail size={20} />, href: "mailto:d.unah@wustl.edu", label: "Email", external: false },
     {
       icon: <FileText size={20} />,
-      href: "mailto:d.unah@wustl.edu?subject=Resume%20request",
+      href: "/Daniel%20Unah%20-%20Resume.pdf",
       label: "Resume",
-      external: false,
+      external: true,
     },
   ];
 
