@@ -422,7 +422,7 @@ export default function App() {
                 >
                   <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Get In Touch</h2>
                   <p className="text-lg text-muted mb-6">
-                    I am joining Atlassian full-time in July 2026. I am still always happy to connect—questions, collaboration, or just saying hello.
+                    I am joining Atlassian full-time in July 2026. I am still always happy to connect! Feel free to reach out with any questions, collaboration, or just saying hello.
                   </p>
                   <p className="text-sm text-muted mb-12 font-mono">
                     <a href="mailto:dunah09@gmail.com" className="text-accent hover:underline">dunah09@gmail.com</a>
