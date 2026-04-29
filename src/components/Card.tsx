@@ -10,10 +10,11 @@ interface CardProps {
   description: string[];
   tags?: string[];
   link?: string;
+  extraLinks?: { href: string; label: string }[];
   key?: string | number;
 }
 
-export default function Card({ title, subtitle, date, location, description, tags, link }: CardProps) {
+export default function Card({ title, subtitle, date, location, description, tags, link, extraLinks }: CardProps) {
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -46,8 +47,8 @@ export default function Card({ title, subtitle, date, location, description, tag
       </div>
       <ul className="space-y-2 mb-6">
         {description.map((item, i) => (
-          <li key={i} className="text-muted text-sm sm:text-base leading-relaxed flex gap-3">
-            <span className="text-accent mt-1.5 shrink-0">•</span>
+          <li key={i} className="text-muted text-sm sm:text-base leading-relaxed flex items-start gap-3">
+            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
             <span>{item}</span>
           </li>
         ))}
@@ -61,6 +62,22 @@ export default function Card({ title, subtitle, date, location, description, tag
             >
               {tag}
             </span>
+          ))}
+        </div>
+      )}
+      {extraLinks && extraLinks.length > 0 && (
+        <div className="flex flex-wrap gap-4 mt-4 text-sm">
+          {extraLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent/80 font-medium inline-flex items-center gap-1"
+            >
+              {l.label}
+              <ExternalLink size={14} />
+            </a>
           ))}
         </div>
       )}

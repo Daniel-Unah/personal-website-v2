@@ -1,16 +1,38 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Github, Linkedin, Mail, ExternalLink, GraduationCap, Briefcase, Code, Award, MapPin, Calendar, FileText, ChevronRight } from "lucide-react";
+import { Github, Linkedin, Mail, Briefcase, Code, Award, MapPin, Calendar } from "lucide-react";
 import Terminal from "./components/Terminal";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import Card from "./components/Card";
-import { cn } from "./lib/utils";
+const SCHEDULESYNC_DEMO_MP4 =
+  "https://raw.githubusercontent.com/Daniel-Unah/Daniel-Unah.github.io/main/images-videos/schedulesync%20demo.mp4";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
 
   const experiences = [
+    {
+      title: "Incoming Software Engineer",
+      subtitle: "Atlassian",
+      date: "Starting July 2026",
+      location: "San Francisco, CA",
+      description: [
+        "Returning full-time after interning on Confluence in Summer 2025",
+      ],
+      tags: ["Web Development", "Confluence", "Spring", "Java"],
+    },
+    {
+      title: "Software Engineer",
+      subtitle: "EDUrain",
+      date: "January 2026 – May 2026",
+      location: "Remote",
+      description: [
+        "Fixed frontend bugs in the company website using React and TypeScript",
+        "Built a feature for users to create short-term listings on the platform using Next.js and TypeScript",
+      ],
+      tags: ["React", "TypeScript", "Next.js"],
+    },
     {
       title: "Software Engineer Intern",
       subtitle: "Atlassian",
@@ -21,6 +43,7 @@ export default function App() {
         "Enhanced Confluence’s GraphQL API by building a new endpoint that detects when a user has already requested access to content",
         "Shipped 10+ front-end features/fixes for Confluence using React & TypeScript, directly impacting customer usability",
         "Led QA blitz testing for new features and facilitated team sprint ceremonies for my team of ~15 engineers",
+        "Organized a volunteer event for my team and competed in an intern hackathon",
       ],
       tags: ["Reactive Java", "Spring", "GraphQL", "React", "TypeScript"],
     },
@@ -30,9 +53,10 @@ export default function App() {
       date: "January 2024 – Present",
       location: "St. Louis, MO",
       description: [
-        "As a TA, I lead small groups of students through problem-solving studio classes and grade exams and lab assignments",
-        "Introduction to CS: Core computer science concepts like recursion and object-oriented programming in Java",
-        "Data Structures and Algorithms: Concepts in data structures (trees, graphs, maps, …) and algorithms (sorting, searching)",
+        "Lead small groups through problem-solving studio classes and grade exams and lab assignments (courses taught in Java)",
+        "Introduction to CS: recursion, object-oriented programming, and core CS concepts",
+        "Data Structures and Algorithms: trees, graphs, maps, sorting, searching, and related topics",
+        "Host TA office hours supporting 30+ students per session",
       ],
       tags: ["Java", "Data Structures", "Algorithms", "Mentorship"],
     },
@@ -42,10 +66,12 @@ export default function App() {
       date: "May 2024 – August 2024",
       location: "Atlanta, GA",
       description: [
-        "Designed and deployed a full-stack interactive EV charger map in React Native, Java Spring Boot, SQL, and Android Studio",
-        "Presented to executives and concept will be integrated on the platform improving user access to EV chargers",
+        "Added a page with new functionality to an existing corporate mobile app using React Native and Java Spring Boot",
+        "Presented the project to company executives at the end of the internship",
+        "Participated in a design sprint and used Figma for wireframes and UI design",
+        "Joined an intern hackathon and a cybersecurity capture-the-flag event",
       ],
-      tags: ["React Native", "Java Spring Boot", "SQL", "Android Studio"],
+      tags: ["React Native", "Java Spring Boot", "SQL", "Figma"],
     },
     {
       title: "Data Analyst Intern",
@@ -53,11 +79,25 @@ export default function App() {
       date: "April 2023 – May 2024",
       location: "St. Louis, MO",
       description: [
-        "Developed two customer service AI chatbots, achieving an 80% customer satisfaction score",
-        "Analyzed 10,000+ customer chargebacks in Python; findings presented to executives influenced fraud prevention strategies",
-        "Used Google Analytics 4 and React to boost user traffic on the company’s website",
+        "Partnered with decision-makers on analytics to improve customer interactions, sales, satisfaction, and cost efficiency",
+        "Built automated AI chatbots with an 80% customer satisfaction score (compared to 83% for human agents); wrote documentation and trained coworkers on maintenance",
+        "Used React and Google Analytics 4 to update site tags and boost traffic in target regions",
+        "Analyzed customer chargeback trends in Python and presented findings that informed fraud-prevention strategy",
       ],
       tags: ["Python", "AI Chatbots", "Google Analytics 4", "React"],
+    },
+    {
+      title: "Student Technical Coordinator",
+      subtitle: "WashU Student Technology Services (STS)",
+      date: "March 2023 – May 2024",
+      location: "St. Louis, MO",
+      description: [
+        "Provided network and hardware support to undergraduates in an assigned residence hall and at the STS Service Desk",
+        "Managed ~20 ServiceNow tickets per day at the desk",
+        "Ran an educational session for residential students on a tech topic of interest",
+        "Researched how WashU IT compares to peer institutions and presented findings to leadership",
+      ],
+      tags: ["ServiceNow", "IT Support", "Networking"],
     },
   ];
 
@@ -65,21 +105,22 @@ export default function App() {
     {
       title: "ScheduleSync",
       subtitle: "Full Stack Web App",
-      date: "2024",
+      date: "2026",
       description: [
-        "Google-verified web app that parses Workday schedule spreadsheets and syncs recurring class events directly to users' Google Calendars",
-        "Streamlines academic scheduling for WashU students by automating calendar management",
+        "WashU uses Workday for academic data—ScheduleSync is a Google-verified app that parses Workday schedule spreadsheets and syncs recurring class events to Google Calendar",
+        "Cuts manual calendar setup so students stay organized across the semester",
       ],
       tags: ["React", "Node.js", "Google Calendar API", "OAuth 2.0"],
       link: "https://schedulesync.live/",
+      extraLinks: [{ href: SCHEDULESYNC_DEMO_MP4, label: "Watch demo video" }],
     },
     {
       title: "Goat Tracker",
       subtitle: "Data Dashboard",
-      date: "2024",
+      date: "2025",
       description: [
-        "LeBron James stat tracking dashboard pulling real-time data from the NBA API",
-        "Built with a React.js frontend and a Python Flask backend, deployed on Railway",
+        "I have been a LeBron James fan since I was about 10, so I built a live stat dashboard that pulls from the NBA API",
+        "React frontend, Python Flask backend, deployed on Railway",
       ],
       tags: ["React.js", "Python", "Flask", "NBA API", "Railway"],
       link: "https://goat-tracker-production.up.railway.app/",
@@ -87,20 +128,31 @@ export default function App() {
     {
       title: "Chelsea Fan App",
       subtitle: "Real-time Sports App",
-      date: "2024",
+      date: "2025",
       description: [
-        "A central hub for Chelsea supporters to catch up on latest news, fixtures, and squad info",
-        "Integrates real-time football and news APIs with a Next.js and Supabase architecture",
+        "I have supported Chelsea since I was a kid; this app aggregates news, fixtures, and squad info in one place",
+        "Next.js, Tailwind CSS, and Supabase with real-time football and news APIs (ongoing)",
       ],
       tags: ["Next.js", "Tailwind CSS", "Supabase", "Sports APIs"],
       link: "https://chelsea-fan-app-production.up.railway.app/",
     },
+    {
+      title: "Wave Survival",
+      subtitle: "Unity 2D Game",
+      date: "2025",
+      description: [
+        "Wave-based survival game inspired by Call of Duty Zombies, built in Unity and C# for a video game programming course",
+        "Clear each wave to open the shop—buy weapons, upgrades, or health; mouse to aim, click to shoot, optional auto-fire from the pause menu",
+      ],
+      tags: ["Unity", "C#", "Game Dev"],
+      link: "https://danielunah.itch.io/wave-survival",
+    },
   ];
 
   const skills = {
-    languages: ["Python", "Java", "JavaScript", "TypeScript", "SQL", "C#", "R", "Swift"],
-    frameworks: ["React", "React Native", "Spring Boot", "Node.js", "Flask", "Tailwind CSS"],
-    tools: ["Git", "GraphQL", "Android Studio", "Google Analytics 4", "Vite"],
+    languages: ["Python", "Java", "JavaScript", "TypeScript", "SQL", "C++", "C#", "R", "Swift", "PHP"],
+    frameworks: ["React", "React Native", "Next.js", "Spring Boot", "Node.js", "Flask", "Tailwind CSS"],
+    tools: ["Git", "GraphQL", "MongoDB", "Unity", "Figma", "Android Studio", "Google Analytics 4", "Vite", "ServiceNow"],
   };
 
   const education = {
@@ -108,7 +160,7 @@ export default function App() {
     degree: "BS, Computer Science",
     minors: "General Economics and Biomedical Data Science",
     gpa: "3.5",
-    date: "Expected Graduation: May 2026",
+    date: "Graduation: May 2026",
     location: "St. Louis, MO",
     honors: [
       "John B. Ervin Scholar: Prestigious WashU merit scholarship program. 26 Scholars selected out of over 3,000 applicants.",
@@ -119,7 +171,7 @@ export default function App() {
     {
       title: "Chapter Development Chair",
       org: "WashU National Society of Black Engineers",
-      date: "May 2024 - Present",
+      date: "May 2024 - May 2026",
       description: [
         "Responsible for fostering growth, engagement, and collaboration within the chapter, as well as with other clubs with similar missions",
       ],
@@ -146,9 +198,9 @@ export default function App() {
           >
             <Navbar />
             
-            <main className="pt-24 pb-20 px-6">
+            <main id="top" className="pt-16 pb-20 px-6">
               {/* Hero Section */}
-              <section id="about" className="max-w-5xl mx-auto py-20 sm:py-32">
+              <section id="about" className="max-w-5xl mx-auto pt-8 pb-20 sm:pt-12 sm:pb-28">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -157,30 +209,28 @@ export default function App() {
                 >
                   <div className="flex-1 order-2 md:order-1">
                     <p className="font-mono text-accent mb-4">Hi, my name is</p>
-                    <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-6">
+                    <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-4">
                       Daniel Unah<span className="text-accent">.</span>
                     </h1>
-                    <h2 className="text-3xl sm:text-5xl font-bold text-muted mb-8 leading-tight">
-                      I build scalable software and data-driven solutions.
+                    <h2 className="text-2xl sm:text-4xl font-bold text-foreground/90 mb-4 leading-tight">
+                      Software engineer.
                     </h2>
-                    <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-12">
-                      I'm a Computer Science student at <span className="text-foreground font-medium">Washington University in St. Louis</span>, 
-                      passionate about full-stack development, mobile applications, and artificial intelligence. 
-                      Currently focused on building impactful features at <span className="text-foreground font-medium">Atlassian</span>.
+                    <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-6">
+                      I grew up in <span className="text-foreground font-medium">Chapel Hill, North Carolina</span> with my parents, older brother, and younger sister. I have been curious about technology for as long as I can remember, and I am pursuing a career in software engineering. I studied Computer Science at{" "}
+                      <span className="text-foreground font-medium">Washington University in St. Louis</span>
+                      , with coursework and side projects across web, mobile, data, and game development.
                     </p>
+                    <p className="text-base text-muted max-w-2xl leading-relaxed mb-6">
+                      Away from the keyboard I am usually watching or playing soccer and basketball, catching up on anime, reading, listening to music, or exercising.
+                    </p>
+
                     
                     <div className="flex flex-wrap gap-4">
                       <a
-                        href="mailto:d.unah@wustl.edu"
+                        href="#contact"
                         className="px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-all flex items-center gap-2"
                       >
                         Get in touch <Mail size={18} />
-                      </a>
-                      <a
-                        href="#"
-                        className="px-8 py-4 bg-white/5 border border-border text-foreground font-medium rounded-lg hover:bg-white/10 transition-all flex items-center gap-2"
-                      >
-                        View Resume <FileText size={18} />
                       </a>
                     </div>
                   </div>
@@ -193,10 +243,9 @@ export default function App() {
                       {/* Image container */}
                       <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
                         <img
-                          src="src/images/me.jpg"
+                          src="/headshot.jpeg"
                           alt="Daniel Unah"
-                          className="w-full h-full object-cover hover:grayscale-0 transition-all duration-500"
-                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover object-top hover:grayscale-0 transition-all duration-500"
                         />
                         {/* Overlay */}
                         <div className="absolute inset-0 bg-accent/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-300" />
@@ -235,6 +284,7 @@ export default function App() {
                       description={project.description}
                       tags={project.tags}
                       link={project.link}
+                      extraLinks={project.extraLinks}
                     />
                   ))}
                 </div>
@@ -242,6 +292,9 @@ export default function App() {
 
               {/* Skills Section */}
               <Section title="Skills" id="skills">
+                <p className="text-muted max-w-3xl mb-10 leading-relaxed">
+                  Comfortable with the stack below through WashU coursework and independent projects—including HTML, CSS, JavaScript, PHP, SQL, React, MongoDB, C++, Python, R, and Java.
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="glass-card p-8">
                     <div className="flex items-center gap-3 mb-6 text-accent">
@@ -354,9 +407,13 @@ export default function App() {
                   transition={{ duration: 0.6 }}
                 >
                   <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Get In Touch</h2>
-                  <p className="text-lg text-muted mb-12">
-                    I'm currently looking for full-time opportunities starting Summer 2026. 
-                    Whether you have a question or just want to say hi, my inbox is always open!
+                  <p className="text-lg text-muted mb-6">
+                    I am joining Atlassian full-time in July 2026. I am still always happy to connect—questions, collaboration, or just saying hello.
+                  </p>
+                  <p className="text-sm text-muted mb-12 font-mono">
+                    <a href="mailto:dunah09@gmail.com" className="text-accent hover:underline">dunah09@gmail.com</a>
+                    <span className="mx-2 text-border">·</span>
+                    <a href="mailto:d.unah@wustl.edu" className="text-accent hover:underline">d.unah@wustl.edu</a>
                   </p>
                   <a
                     href="mailto:d.unah@wustl.edu"
@@ -365,7 +422,7 @@ export default function App() {
                     Say Hello <Mail size={20} />
                   </a>
                   
-                  <div className="flex justify-center gap-8 mt-16">
+                  <div className="flex justify-center gap-8 mt-16 flex-wrap">
                     <a href="https://www.linkedin.com/in/daniel-unah-878447252/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
                       <Linkedin size={28} />
                       <span className="text-xs font-mono">LinkedIn</span>
@@ -376,15 +433,38 @@ export default function App() {
                     </a>
                     <a href="mailto:d.unah@wustl.edu" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
                       <Mail size={28} />
-                      <span className="text-xs font-mono">Email</span>
+                      <span className="text-xs font-mono">School email</span>
+                    </a>
+                    <a href="mailto:dunah09@gmail.com" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                      <Mail size={28} />
+                      <span className="text-xs font-mono">Personal email</span>
                     </a>
                   </div>
                 </motion.div>
               </section>
 
               {/* Footer */}
-              <footer className="max-w-5xl mx-auto pt-20 border-t border-border text-center text-muted text-sm font-mono">
+              <footer className="max-w-5xl mx-auto pt-20 border-t border-border text-center text-muted text-sm font-mono space-y-2">
                 <p>© {new Date().getFullYear()} Daniel Unah. Built with React & Tailwind CSS.</p>
+                <p>
+                  <a
+                    href="https://daniel-unah.github.io/src/Home.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors"
+                  >
+                    First version of this site
+                  </a>
+                  {" · "}
+                  <a
+                    href="https://danielunah.itch.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors"
+                  >
+                    itch.io
+                  </a>
+                </p>
               </footer>
             </main>
           </motion.div>

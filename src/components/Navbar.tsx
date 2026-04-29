@@ -3,19 +3,25 @@ import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 export default function Navbar() {
   const navItems = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "#top" },
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Education", href: "#education" },
+    { name: "Leadership", href: "#leadership" },
     { name: "Contact", href: "#contact" },
   ];
 
   const socialItems = [
-    { icon: <Github size={20} />, href: "https://github.com/Daniel-Unah", label: "GitHub" },
-    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/daniel-unah-878447252/", label: "LinkedIn" },
-    { icon: <Mail size={20} />, href: "mailto:d.unah@wustl.edu", label: "Email" },
-    { icon: <FileText size={20} />, href: "#", label: "Resume" },
+    { icon: <Github size={20} />, href: "https://github.com/Daniel-Unah", label: "GitHub", external: true },
+    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/daniel-unah-878447252/", label: "LinkedIn", external: true },
+    { icon: <Mail size={20} />, href: "mailto:d.unah@wustl.edu", label: "Email", external: false },
+    {
+      icon: <FileText size={20} />,
+      href: "mailto:d.unah@wustl.edu?subject=Resume%20request",
+      label: "Resume",
+      external: false,
+    },
   ];
 
   return (
@@ -47,8 +53,7 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               className="text-muted hover:text-accent transition-colors"
               aria-label={item.label}
             >
