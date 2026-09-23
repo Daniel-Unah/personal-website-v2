@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import { ReactNode } from "react";
 import { ExternalLink, Calendar, MapPin } from "lucide-react";
 
 interface CardProps {
@@ -11,7 +10,6 @@ interface CardProps {
   tags?: string[];
   link?: string;
   extraLinks?: { href: string; label: string }[];
-  key?: string | number;
 }
 
 export default function Card({ title, subtitle, date, location, description, tags, link, extraLinks }: CardProps) {

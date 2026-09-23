@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Github, Linkedin, Mail, Briefcase, Code, Award, MapPin, Calendar } from "lucide-react";
-import Terminal from "./components/Terminal";
 import Navbar from "./components/Navbar";
 import Section from "./components/Section";
 import Card from "./components/Card";
@@ -9,8 +7,6 @@ const SCHEDULESYNC_DEMO_MP4 =
   "https://drive.google.com/file/d/1ZxT1ZVPLm1T49qWm9w9cjKozFXgOnbGb/view?usp=sharing";
 
 export default function App() {
-  const [showIntro, setShowIntro] = useState(true);
-
   const experiences = [
     {
       title: "Incoming Software Engineer",
@@ -191,299 +187,279 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background selection:bg-accent/30 selection:text-accent">
-      <AnimatePresence mode="wait">
-        {showIntro ? (
+      <Navbar />
+
+      <main id="top" className="scroll-mt-24 pt-16 pb-20 px-6">
+        {/* Hero Section */}
+        <section
+          id="about"
+          className="max-w-5xl mx-auto min-h-[calc(100vh-4rem)] pt-8 pb-12 sm:pt-12 sm:pb-16 flex items-center"
+        >
           <motion.div
-            key="intro"
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col md:flex-row items-center gap-12"
           >
-            <Terminal onComplete={() => setShowIntro(false)} />
+            <div className="flex-1 order-2 md:order-1">
+              <p className="font-mono text-accent mb-4">Hi, my name is</p>
+              <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-4">
+                Daniel Unah<span className="text-accent">.</span>
+              </h1>
+              <h2 className="text-2xl sm:text-4xl font-bold text-foreground/90 mb-4 leading-tight">
+                Software engineer.
+              </h2>
+              <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-6">
+                I grew up in <span className="text-foreground font-medium">Chapel Hill, North Carolina</span> with my parents, older brother, and younger sister. I have been curious about technology for as long as I can remember, and I am pursuing a career in software engineering. I studied Computer Science at{" "}
+                <span className="text-foreground font-medium">Washington University in St. Louis</span>
+                , with coursework and side projects across web, mobile, data, and game development.
+              </p>
+              <p className="text-base text-muted max-w-2xl leading-relaxed mb-6">
+              Away from the keyboard I am usually watching or playing soccer and basketball, catching up on anime, reading, listening to music, or exercising.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+                <a
+                  href="#contact"
+                  className="px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-all flex items-center gap-2"
+                >
+                  Get in touch <Mail size={18} />
+                </a>
+              </div>
+            </div>
+
+            <div className="relative order-1 md:order-2 shrink-0">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 relative group">
+                {/* Decorative background element */}
+                <div className="absolute inset-0 border-2 border-accent rounded-2xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
+                
+                {/* Image container */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
+                  <img
+                    src="/headshot.jpeg"
+                    alt="Daniel Unah"
+                    className="w-full h-full object-cover object-top hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-accent/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-300" />
+                </div>
+              </div>
+            </div>
           </motion.div>
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <Navbar />
+        </section>
+
+        {/* Experience Section */}
+        <Section title="Experience" id="experience">
+          <div className="space-y-4">
+            {experiences.map((exp, i) => (
+              <Card
+                key={i}
+                title={exp.subtitle}
+                subtitle={exp.title}
+                date={exp.date}
+                location={exp.location}
+                description={exp.description}
+                tags={exp.tags}
+              />
+            ))}
+          </div>
+        </Section>
+
+        {/* Projects Section */}
+        <Section title="Projects" id="projects">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {projects.map((project, i) => (
+              <Card
+                key={i}
+                title={project.title}
+                subtitle={project.subtitle}
+                date={project.date}
+                description={project.description}
+                tags={project.tags}
+                link={project.link}
+                extraLinks={project.extraLinks}
+              />
+            ))}
+          </div>
+        </Section>
+
+        {/* Skills Section */}
+        <Section title="Skills" id="skills">
+          <p className="text-muted max-w-3xl mb-10 leading-relaxed">
+            Comfortable with the stack below through WashU coursework and independent projects—including HTML, CSS, JavaScript, PHP, SQL, React, MongoDB, C++, Python, R, and Java.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="glass-card p-8">
+              <div className="flex items-center gap-3 mb-6 text-accent">
+                <Code size={24} />
+                <h3 className="text-xl font-bold text-foreground">Languages</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skills.languages.map((s) => (
+                  <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
             
-            <main id="top" className="scroll-mt-24 pt-16 pb-20 px-6">
-              {/* Hero Section */}
-              <section
-                id="about"
-                className="max-w-5xl mx-auto min-h-[calc(100vh-4rem)] pt-8 pb-12 sm:pt-12 sm:pb-16 flex items-center"
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="flex flex-col md:flex-row items-center gap-12"
-                >
-                  <div className="flex-1 order-2 md:order-1">
-                    <p className="font-mono text-accent mb-4">Hi, my name is</p>
-                    <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-4">
-                      Daniel Unah<span className="text-accent">.</span>
-                    </h1>
-                    <h2 className="text-2xl sm:text-4xl font-bold text-foreground/90 mb-4 leading-tight">
-                      Software engineer.
-                    </h2>
-                    <p className="text-lg sm:text-xl text-muted max-w-2xl leading-relaxed mb-6">
-                      I grew up in <span className="text-foreground font-medium">Chapel Hill, North Carolina</span> with my parents, older brother, and younger sister. I have been curious about technology for as long as I can remember, and I am pursuing a career in software engineering. I studied Computer Science at{" "}
-                      <span className="text-foreground font-medium">Washington University in St. Louis</span>
-                      , with coursework and side projects across web, mobile, data, and game development.
-                    </p>
-                    <p className="text-base text-muted max-w-2xl leading-relaxed mb-6">
-                      Away from the keyboard I am usually watching or playing soccer and basketball, catching up on anime, reading, listening to music, or exercising.
-                    </p>
+            <div className="glass-card p-8">
+              <div className="flex items-center gap-3 mb-6 text-accent">
+                <Briefcase size={24} />
+                <h3 className="text-xl font-bold text-foreground">Frameworks</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skills.frameworks.map((s) => (
+                  <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-                    
-                    <div className="flex flex-wrap gap-4">
-                      <a
-                        href="#contact"
-                        className="px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent/90 transition-all flex items-center gap-2"
-                      >
-                        Get in touch <Mail size={18} />
-                      </a>
-                    </div>
-                  </div>
+            <div className="glass-card p-8">
+              <div className="flex items-center gap-3 mb-6 text-accent">
+                <Award size={24} />
+                <h3 className="text-xl font-bold text-foreground">Tools</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skills.tools.map((s) => (
+                  <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Section>
 
-                  <div className="relative order-1 md:order-2 shrink-0">
-                    <div className="w-64 h-64 sm:w-80 sm:h-80 relative group">
-                      {/* Decorative background element */}
-                      <div className="absolute inset-0 border-2 border-accent rounded-2xl translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
-                      
-                      {/* Image container */}
-                      <div className="absolute inset-0 rounded-2xl overflow-hidden bg-white/5 border border-border">
-                        <img
-                          src="/headshot.jpeg"
-                          alt="Daniel Unah"
-                          className="w-full h-full object-cover object-top hover:grayscale-0 transition-all duration-500"
-                        />
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-accent/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-300" />
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </section>
-
-              {/* Experience Section */}
-              <Section title="Experience" id="experience">
-                <div className="space-y-4">
-                  {experiences.map((exp, i) => (
-                    <Card
-                      key={i}
-                      title={exp.subtitle}
-                      subtitle={exp.title}
-                      date={exp.date}
-                      location={exp.location}
-                      description={exp.description}
-                      tags={exp.tags}
-                    />
+        {/* Education Section */}
+        <Section title="Education" id="education">
+          <div className="glass-card p-8 sm:p-10">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">{education.school}</h3>
+                <p className="text-accent text-lg font-medium">{education.degree}</p>
+                <p className="text-muted mt-1">Minors in {education.minors}</p>
+              </div>
+              <div className="flex flex-col items-start sm:items-end text-sm text-muted gap-1">
+                <div className="flex items-center gap-1.5">
+                  <Calendar size={14} />
+                  <span>{education.date}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <MapPin size={14} />
+                  <span>{education.location}</span>
+                </div>
+                <div className="mt-2 px-3 py-1 bg-accent/10 text-accent rounded-full font-bold">
+                  GPA: {education.gpa}
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-foreground font-bold mb-3 flex items-center gap-2">
+                  <Award size={18} className="text-accent" />
+                  Honors & Scholarships
+                </h4>
+                <ul className="space-y-2">
+                  {education.honors.map((honor, i) => (
+                    <li key={i} className="text-muted leading-relaxed flex gap-3">
+                      <span className="text-accent mt-1.5 shrink-0">•</span>
+                      <span>{honor}</span>
+                    </li>
                   ))}
-                </div>
-              </Section>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Section>
 
-              {/* Projects Section */}
-              <Section title="Projects" id="projects">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {projects.map((project, i) => (
-                    <Card
-                      key={i}
-                      title={project.title}
-                      subtitle={project.subtitle}
-                      date={project.date}
-                      description={project.description}
-                      tags={project.tags}
-                      link={project.link}
-                      extraLinks={project.extraLinks}
-                    />
-                  ))}
-                </div>
-              </Section>
+        {/* Leadership Section */}
+        <Section title="Leadership" id="leadership">
+          <div className="space-y-4">
+            {leadership.map((lead, i) => (
+              <Card
+                key={i}
+                title={lead.org}
+                subtitle={lead.title}
+                date={lead.date}
+                description={lead.description}
+              />
+            ))}
+          </div>
+        </Section>
 
-              {/* Skills Section */}
-              <Section title="Skills" id="skills">
-                <p className="text-muted max-w-3xl mb-10 leading-relaxed">
-                  Comfortable with the stack below through WashU coursework and independent projects—including HTML, CSS, JavaScript, PHP, SQL, React, MongoDB, C++, Python, R, and Java.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="glass-card p-8">
-                    <div className="flex items-center gap-3 mb-6 text-accent">
-                      <Code size={24} />
-                      <h3 className="text-xl font-bold text-foreground">Languages</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.languages.map((s) => (
-                        <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="glass-card p-8">
-                    <div className="flex items-center gap-3 mb-6 text-accent">
-                      <Briefcase size={24} />
-                      <h3 className="text-xl font-bold text-foreground">Frameworks</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.frameworks.map((s) => (
-                        <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="glass-card p-8">
-                    <div className="flex items-center gap-3 mb-6 text-accent">
-                      <Award size={24} />
-                      <h3 className="text-xl font-bold text-foreground">Tools</h3>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.tools.map((s) => (
-                        <span key={s} className="px-3 py-1.5 bg-white/5 border border-border rounded-md text-sm text-muted">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Section>
-
-              {/* Education Section */}
-              <Section title="Education" id="education">
-                <div className="glass-card p-8 sm:p-10">
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground">{education.school}</h3>
-                      <p className="text-accent text-lg font-medium">{education.degree}</p>
-                      <p className="text-muted mt-1">Minors in {education.minors}</p>
-                    </div>
-                    <div className="flex flex-col items-start sm:items-end text-sm text-muted gap-1">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar size={14} />
-                        <span>{education.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <MapPin size={14} />
-                        <span>{education.location}</span>
-                      </div>
-                      <div className="mt-2 px-3 py-1 bg-accent/10 text-accent rounded-full font-bold">
-                        GPA: {education.gpa}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="text-foreground font-bold mb-3 flex items-center gap-2">
-                        <Award size={18} className="text-accent" />
-                        Honors & Scholarships
-                      </h4>
-                      <ul className="space-y-2">
-                        {education.honors.map((honor, i) => (
-                          <li key={i} className="text-muted leading-relaxed flex gap-3">
-                            <span className="text-accent mt-1.5 shrink-0">•</span>
-                            <span>{honor}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </Section>
-
-              {/* Leadership Section */}
-              <Section title="Leadership" id="leadership">
-                <div className="space-y-4">
-                  {leadership.map((lead, i) => (
-                    <Card
-                      key={i}
-                      title={lead.org}
-                      subtitle={lead.title}
-                      date={lead.date}
-                      description={lead.description}
-                    />
-                  ))}
-                </div>
-              </Section>
-
-              {/* Contact Section */}
-              <section id="contact" className="scroll-mt-24 max-w-3xl mx-auto py-24 text-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Get In Touch</h2>
-                  <p className="text-lg text-muted mb-6">
-                    I am joining Atlassian full-time in July 2026. I am still always happy to connect! Feel free to reach out with any questions, collaboration, or just saying hello.
-                  </p>
-                  <p className="text-sm text-muted mb-12 font-mono">
-                    <a href="mailto:dunah09@gmail.com" className="text-accent hover:underline">dunah09@gmail.com</a>
-                    <span className="mx-2 text-border">·</span>
-                    <a href="mailto:d.unah@wustl.edu" className="text-accent hover:underline">d.unah@wustl.edu</a>
-                  </p>
-                  <a
-                    href="mailto:d.unah@wustl.edu"
-                    className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-accent text-accent font-bold text-lg rounded-lg hover:bg-accent/10 transition-all"
-                  >
-                    Say Hello <Mail size={20} />
-                  </a>
-                  
-                  <div className="flex justify-center gap-8 mt-16 flex-wrap">
-                    <a href="https://www.linkedin.com/in/daniel-unah-878447252/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
-                      <Linkedin size={28} />
-                      <span className="text-xs font-mono">LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/Daniel-Unah" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
-                      <Github size={28} />
-                      <span className="text-xs font-mono">GitHub</span>
-                    </a>
-                    <a href="mailto:d.unah@wustl.edu" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
-                      <Mail size={28} />
-                      <span className="text-xs font-mono">School email</span>
-                    </a>
-                    <a href="mailto:dunah09@gmail.com" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
-                      <Mail size={28} />
-                      <span className="text-xs font-mono">Personal email</span>
-                    </a>
-                  </div>
-                </motion.div>
-              </section>
-
-              {/* Footer */}
-              <footer className="max-w-5xl mx-auto pt-20 border-t border-border text-center text-muted text-sm font-mono space-y-2">
-                <p>© {new Date().getFullYear()} Daniel Unah. Built with React & Tailwind CSS.</p>
-                <p>
-                  <a
-                    href="https://daniel-unah.github.io/src/Home.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent transition-colors"
-                  >
-                    First version of this site
-                  </a>
-                  {" · "}
-                  <a
-                    href="https://danielunah.itch.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-accent transition-colors"
-                  >
-                    itch.io
-                  </a>
-                </p>
-              </footer>
-            </main>
+        {/* Contact Section */}
+        <section id="contact" className="scroll-mt-24 max-w-3xl mx-auto py-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">Get In Touch</h2>
+            <p className="text-lg text-muted mb-6">
+              I am joining Atlassian full-time in July 2026. I am still always happy to connect! Feel free to reach out with any questions, collaboration, or just saying hello.
+            </p>
+            <p className="text-sm text-muted mb-12 font-mono">
+              <a href="mailto:dunah09@gmail.com" className="text-accent hover:underline">dunah09@gmail.com</a>
+              <span className="mx-2 text-border">·</span>
+              <a href="mailto:d.unah@wustl.edu" className="text-accent hover:underline">d.unah@wustl.edu</a>
+            </p>
+            <a
+              href="mailto:d.unah@wustl.edu"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border-2 border-accent text-accent font-bold text-lg rounded-lg hover:bg-accent/10 transition-all"
+            >
+              Say Hello <Mail size={20} />
+            </a>
+            
+            <div className="flex justify-center gap-8 mt-16 flex-wrap">
+              <a href="https://www.linkedin.com/in/daniel-unah-878447252/" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                <Linkedin size={28} />
+                <span className="text-xs font-mono">LinkedIn</span>
+              </a>
+              <a href="https://github.com/Daniel-Unah" target="_blank" rel="noopener noreferrer" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                <Github size={28} />
+                <span className="text-xs font-mono">GitHub</span>
+              </a>
+              <a href="mailto:d.unah@wustl.edu" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                <Mail size={28} />
+                <span className="text-xs font-mono">School email</span>
+              </a>
+              <a href="mailto:dunah09@gmail.com" className="text-muted hover:text-accent transition-colors flex flex-col items-center gap-2">
+                <Mail size={28} />
+                <span className="text-xs font-mono">Personal email</span>
+              </a>
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </section>
+
+        {/* Footer */}
+        <footer className="max-w-5xl mx-auto pt-20 border-t border-border text-center text-muted text-sm font-mono space-y-2">
+          <p>© {new Date().getFullYear()} Daniel Unah. Built with React & Tailwind CSS.</p>
+          <p>
+            <a
+              href="https://daniel-unah.github.io/src/Home.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              First version of this site
+            </a>
+            {" · "}
+            <a
+              href="https://danielunah.itch.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-accent transition-colors"
+            >
+              itch.io
+            </a>
+          </p>
+        </footer>
+      </main>
     </div>
   );
 }
